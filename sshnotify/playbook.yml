@@ -1,0 +1,23 @@
+---
+ - name: "Configure notifications of incoming SSH logins"
+   hosts: 127.0.0.1
+   connection: local
+   tasks:
+
+    - name: "Get current user to use it as a notification receiver"
+      command: whoami
+      register: notification_receiver
+
+    - name: "Ensure /usr/local/bin exists"
+      file: dest=/usr/local/bin/ state=directory
+      become: yes
+
+    - name: "Copy sshnotify script"
+      template: src=sshnotify.j2 dest=/usr/local/bin/sshnotify mode=a+x
+      become: yes
+
+    - name: "Add pam rule to execute sshnotify script on SSH login"
+      lineinfile:
+         dest: /etc/pam.d/sshd
+         line: "session optional pam_exec.so /usr/local/bin/sshnotify"
+      become: yes

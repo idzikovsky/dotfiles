@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for ENV_FILE in /home/{{ notification_receiver.stdout_lines|first }}/.dbus/session-bus/* ; do
+  source "$ENV_FILE"
+done
+
+export DBUS_SESSION_BUS_ADDRESS
+export DISPLAY=:0
+
+MSG="Login to ${PAM_USER} from ${PAM_RHOST}"
+
+sudo -u {{ notification_receiver.stdout_lines|first }} notify-send "SSHD" "$MSG"
+
+echo "$(date) | $MSG" >> /var/log/ssh_login.log
