@@ -1,6 +1,15 @@
 {
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"detect_indentation": true,
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
-	"ensure_newline_at_eof_on_save": true,
+	"rulers":
+	[
+		100
+	],
+	"save_on_focus_lost": true,
+	"tab_size": 4,
 	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": false,
+	"update_check": false
 }
