@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+
+import requests
+import sys
+
+
+URL = "https://eu-wap.tplinkcloud.com/"
+TOKEN_FILE = "/var/lib/speakerctl.token"
+
+def login():
+    import getpass
+    email = input("Enter E-Mail: ")
+    password = getpass.getpass("Enter password: ")
+
+    resp = requests.post(URL,
+        json={
+            "method": "login",
+            "params": {
+                "appType": "Kasa_Android",
+                "cloudUserName": email,
+                "cloudPassword": password,
+                "terminalUUID": "MY_UUID_v4",
+            },
+        }
+    )
+
+    token = resp.json()["result"]["token"]
+
+    with open("/var/lib/speakerctl.token", "w") as token_file:
+        token_file.write(token)
+
+def set_state(state="off"):
+    if state == "on":
+        state_num = 1
+    else:
+        state_num = 0
+
+    with open(TOKEN_FILE, "r") as token_file:
+        token = token_file.read()
+
+    resp = requests.post(URL,
+        params={"token": token},
+        json={"method": "getDeviceList"}
+    )
+
+    devices = resp.json()["result"]["deviceList"]
+
+    speakers = next((d for d in devices if d["alias"] == "speakers"), None)
+
+    resp = requests.post(URL,
+        params={"token": token},
+        json={
+            "method": "passthrough",
+            "params": {
+                "deviceId": speakers["deviceId"],
+                "requestData": "{\"system\":{\"set_relay_state\":{\"state\":" + str(state_num) + "}}}",
+            },
+        }
+    )
+
+if sys.argv[1] == "login":
+    login()
+elif sys.argv[1] == "on":
+    set_state("on")
+else:
+    set_state("off")

@@ -1,0 +1,11 @@
+[Unit]
+Description=Turn on speakers at system startup
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/speakerctl on
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
