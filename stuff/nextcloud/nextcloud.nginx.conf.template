@@ -2,7 +2,7 @@ server {
 	listen 80;
 	listen [::]:80;
 
-	server_name nc.__DOMAIN__.tk;
+	server_name __NC_HOSTNAME__;
 
 	client_max_body_size 512M;
 

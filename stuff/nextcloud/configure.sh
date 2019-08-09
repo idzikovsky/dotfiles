@@ -12,23 +12,17 @@ sed \
     -e "s/__NC_DB_PASSWORD__/$NC_DB_PASSWORD/" \
     docker-compose.yaml.template > docker-compose.yaml
 
-echo "Configuration files created.
-Are you wish to setup configuration files for Nginx and SystemD? [Y/N]"
-read ANSWER
-if [ "$ANSWER" != "Y" ]; then
-    exit 0
-fi
-
 sudo cp ./nextcloud.nginx.conf /etc/nginx/sites-available
 sudo ln -sr /etc/nginx/sites-{available,enabled}/nextcloud.nginx.conf
 sudo systemctl reload nginx
 
-sudo cp {,/etc/systemd/system}docker-compose-nextcloud.service
-sudo systemctl daemon-reload
-sudo systemctl enable docker-compose-nextcloud
-sudo systemctl start docker-compose-nextcloud
+exit
 
-sleep 5
+docker-compose up -d
+
+echo "Go to http://localhost:8080/ and create admin account."
+echo "Press enter when you will be finished."
+read dummy
 
 echo "Configuring NextCloud server"
 
@@ -38,7 +32,7 @@ docker-compose exec -u www-data nextcloud_app php occ config:system:set trusted_
 docker-compose exec -u www-data nextcloud_app php occ config:system:set trusted_domains 1 --value "localhost:8080"
 MY_IP=$(ip r get 8.8.8.8)
 if [ $? -eq 0 ]; then
-    MY_IP=$(echo "$MY_IP" | grep src | sed -E "s/.*src ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\).*/\1/")
+    MY_IP=$(echo "$MY_IP" | grep src | sed -E "s/.*src ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/")
     docker-compose exec -u www-data nextcloud_app php occ config:system:set trusted_domains 2 --value "$MY_IP:8080"
 fi
 
