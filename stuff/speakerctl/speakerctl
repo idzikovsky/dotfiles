@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 
+import logging
+import pprint
 import requests
 import sys
 
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setLevel(logging.DEBUG)
+log.addHandler(stdout_handler)
 
-URL = "https://eu-wap.tplinkcloud.com/"
+URL = "https://eu-wap.tplinkcloud.com"
 TOKEN_FILE = "/var/lib/speakerctl.token"
 
 def login():
@@ -42,12 +49,15 @@ def set_state(state="off"):
         params={"token": token},
         json={"method": "getDeviceList"}
     )
+    log.debug(pprint.pformat(resp.json()))
 
     devices = resp.json()["result"]["deviceList"]
 
     speakers = next((d for d in devices if d["alias"] == "speakers"), None)
 
-    resp = requests.post(URL,
+    device_URL = speakers.get("appServerUrl", URL)
+
+    resp = requests.post(device_URL,
         params={"token": token},
         json={
             "method": "passthrough",
@@ -57,6 +67,7 @@ def set_state(state="off"):
             },
         }
     )
+    log.debug(pprint.pformat(resp.json()))
 
 if sys.argv[1] == "login":
     login()
