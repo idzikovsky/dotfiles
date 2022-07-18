@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from http.cookiejar import LWPCookieJar
 import logging
 import pprint
 import requests
@@ -13,13 +14,33 @@ log.addHandler(stdout_handler)
 
 URL = "https://eu-wap.tplinkcloud.com"
 TOKEN_FILE = "/var/lib/speakerctl.token"
+COOKIE_FILE = "/var/lib/speakerctl.cookie"
+DEFAULT_DEVICE = "speakers"
 
-def login():
+def mksession(f):
+    def wrapper(*args, **kwargs):
+        jar = LWPCookieJar(COOKIE_FILE)
+        try:
+            jar.load()
+        except FileNotFoundError:
+            pass
+        except Exception as e:
+            log.debug(e)
+            raise
+        session = requests.Session()
+        session.cookies = jar
+        res = f(session, *args, **kwargs)
+        jar.save(ignore_discard=True)
+        return res
+    return wrapper
+
+@mksession
+def login(session):
     import getpass
     email = input("Enter E-Mail: ")
     password = getpass.getpass("Enter password: ")
 
-    resp = requests.post(URL,
+    resp = session.post(URL,
         json={
             "method": "login",
             "params": {
@@ -31,12 +52,18 @@ def login():
         }
     )
 
-    token = resp.json()["result"]["token"]
+    try:
+        token = resp.json()["result"]["token"]
+    except KeyError as e:
+        log.debug(e)
+        log.debug(pprint.pformat(resp.json()))
+        raise
 
     with open("/var/lib/speakerctl.token", "w") as token_file:
         token_file.write(token)
 
-def set_state(state="off"):
+@mksession
+def set_state(session, state="off", device=DEFAULT_DEVICE):
     if state == "on":
         state_num = 1
     else:
@@ -45,7 +72,7 @@ def set_state(state="off"):
     with open(TOKEN_FILE, "r") as token_file:
         token = token_file.read()
 
-    resp = requests.post(URL,
+    resp = session.post(URL,
         params={"token": token},
         json={"method": "getDeviceList"}
     )
@@ -53,11 +80,11 @@ def set_state(state="off"):
 
     devices = resp.json()["result"]["deviceList"]
 
-    speakers = next((d for d in devices if d["alias"] == "speakers"), None)
+    speakers = next((d for d in devices if d["alias"] == device), None)
 
     device_URL = speakers.get("appServerUrl", URL)
 
-    resp = requests.post(device_URL,
+    resp = session.post(device_URL,
         params={"token": token},
         json={
             "method": "passthrough",
@@ -69,9 +96,16 @@ def set_state(state="off"):
     )
     log.debug(pprint.pformat(resp.json()))
 
-if sys.argv[1] == "login":
-    login()
-elif sys.argv[1] == "on":
-    set_state("on")
-else:
-    set_state("off")
+
+if __name__ == "__main__":
+    try:
+        device = sys.argv[2]
+    except IndexError:
+        device = DEFAULT_DEVICE
+
+    if sys.argv[1] == "login":
+        login()
+    elif sys.argv[1] == "on":
+        set_state("on", device)
+    else:
+        set_state("off", device)
