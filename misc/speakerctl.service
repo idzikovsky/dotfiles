@@ -1,0 +1,13 @@
+[Unit]
+Description=Turn on speakers at system startup
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+ExecStart=curl 'http://192.168.228.221/relay/0?turn=on'
+ExecStop=curl 'http://192.168.228.221/relay/0?turn=off'
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
