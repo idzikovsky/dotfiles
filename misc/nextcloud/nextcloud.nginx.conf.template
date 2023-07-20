@@ -1,12 +1,12 @@
 server {
-	listen 80;
-	listen [::]:80;
+    listen 80;
+    listen [::]:80;
 
-	server_name __NC_HOSTNAME__;
+    server_name __NC_HOSTNAME__;
 
-	client_max_body_size 512M;
+    client_max_body_size 512M;
 
-	location / {
-		proxy_pass http://localhost:8080;
-	}
+    location / {
+        proxy_pass http://localhost:8080;
+    }
 }

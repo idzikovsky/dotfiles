@@ -8,12 +8,12 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=true
-      - "MYSQL_PASSWORD=__NC_DB_PASSWORD__"
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
+      MYSQL_RANDOM_ROOT_PASSWORD: true
+      MYSQL_PASSWORD: "__NC_DB_PASSWORD__"
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
     # fix for https://techoverflow.net/2021/08/17/how-to-fix-nextcloud-4047-innodb
-    command: "--skip-innodb-read-only-compressed"
+    # command: "--skip-innodb-read-only-compressed"
 
   nextcloud_app:
     image: nextcloud
@@ -26,8 +26,8 @@ services:
       - ./data:/var/www/html/data
     restart: always
     environment:
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - "MYSQL_PASSWORD=__NC_DB_PASSWORD__"
-      - MYSQL_HOST=nextcloud_db
-      - NEXTCLOUD_DATA_DIR=/var/www/html/data
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: "__NC_DB_PASSWORD__"
+      MYSQL_HOST: nextcloud_db
+      NEXTCLOUD_DATA_DIR: /var/www/html/data
