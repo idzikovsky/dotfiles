@@ -1,2 +1,5 @@
 docker-compose.yaml
 nextcloud.nginx.conf
+mysql/
+config/
+data/
