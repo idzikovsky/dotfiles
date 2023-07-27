@@ -2,7 +2,7 @@
 version: '3'
 
 services:
-  nextcloud_db:
+  db:
     image: mariadb
     restart: always
     volumes:
@@ -13,12 +13,12 @@ services:
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
 
-  nextcloud_app:
+  nextcloud:
     image: nextcloud
     ports:
       - 8080:80
     links:
-      - nextcloud_db
+      - db
     volumes:
       - ./config:/var/www/html/config
       - ./data:/var/www/html/data
@@ -27,5 +27,17 @@ services:
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
       MYSQL_PASSWORD: "__NC_DB_PASSWORD__"
-      MYSQL_HOST: nextcloud_db
+      MYSQL_HOST: db
       NEXTCLOUD_DATA_DIR: /var/www/html/data
+    depends_on:
+      - db
+
+  cron:
+    image: nextcloud
+    restart: always
+    entrypoint: /cron.sh
+    volumes:
+      - ./config:/var/www/html/config
+      - ./data:/var/www/html/data
+    depends_on:
+      - db
