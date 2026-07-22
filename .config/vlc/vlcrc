@@ -1,0 +1,19 @@
+﻿[core]
+audio-language=en
+sub-language=en
+
+[compressor] # Dynamic range compressor
+# RMS/peak (float)
+compressor-rms-peak=0.100000
+# Attack time (float)
+compressor-attack=50.000000
+# Release time (float)
+compressor-release=250.000000
+# Threshold level (float)
+compressor-threshold=-20.000000
+# Ratio (float)
+compressor-ratio=20.000000
+# Knee radius (float)
+compressor-knee=1.000000
+# Makeup gain (float)
+compressor-makeup-gain=12.000000

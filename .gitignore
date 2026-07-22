@@ -8,3 +8,48 @@
 !/.bashrc.d/
 /.bashrc.d/*
 !/.bashrc.d/dotfiles-ps1.sh
+!/.bashrc.d/dotfiles.sh
+
+!/.profile.d/
+/.profile.d/*
+!/.profile.d/dotfiles.sh
+
+!/.config/
+/.config/*
+
+!/.config/user-dirs.dirs
+
+!/.config/ghostty/
+/.config/ghostty/*
+!/.config/ghostty/config.ghostty
+
+!/.config/git/
+/.config/git/*
+!/.config/git/ignore
+
+!/.config/sublime-text/
+/.config/sublime-text/*
+!/.config/sublime-text/Packages/
+/.config/sublime-text/Packages/*
+!/.config/sublime-text/Packages/User/
+/.config/sublime-text/Packages/User/*
+!/.config/sublime-text/Packages/User/Preferences.sublime-settings
+!/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap
+
+!/.config/MangoHud/
+/.config/MangoHud/*
+!/.config/MangoHud/MangoHud.conf
+
+!/.config/mpv/
+/.config/mpv/*
+!/.config/mpv/input.conf
+!/.config/mpv/mpv.conf
+
+# !/.config/vlc/
+# /.config/vlc/*
+# !/.config/vlc/vlcrc
+
+!/.m2/
+/.m2/*
+!/.m2/settings.xml
+
