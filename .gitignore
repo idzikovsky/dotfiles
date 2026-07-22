@@ -1,2 +1,6 @@
 /*
 !/.gitignore
+
+!/.bashrc.d/
+/.bashrc.d/*
+!/.bashrc.d/dotfiles-ps1.sh
