@@ -4,3 +4,7 @@
 !/.ssh/
 /.ssh/*
 !/.ssh/config
+
+!/.bashrc.d/
+/.bashrc.d/*
+!/.bashrc.d/dotfiles-ps1.sh
