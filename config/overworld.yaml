@@ -55,3 +55,7 @@ squares:
   - descr: "jungle"
     a: [ 308, 5 ]
     b: [ 308, 5 ]
+
+  - descr: "wither skeleton farm"
+    a: [ 245, 346 ]
+    b: [ 246, 345 ]

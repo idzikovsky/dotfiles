@@ -1,0 +1,5 @@
+dimension: overworld
+squares:
+  - descr: "woodland mansion"
+    a: [ 515, 411 ]
+    b: [ 519, 416 ]
