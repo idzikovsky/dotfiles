@@ -1,0 +1,57 @@
+dimension: overworld
+squares:
+  - descr: "ice"
+    a: [ -264, -34 ]
+    b: [ -254, -21 ]
+
+  - descr: "witch"
+    a: [ -183, 118 ]
+    b: [ -201, 99 ]
+
+  - descr: "stronghold"
+    a: [ -155, -22 ]
+    b: [ -149, -13 ]
+
+  - descr: "road to stronghold"
+    a: [ -151, -14 ]
+    b: [ -26, -13 ]
+
+  - descr: "fish farm"
+    a: [ -17, -49 ]
+    b: [ -10, -44 ]
+
+  - descr: "mushroom"
+    a: [ 81, -447 ]
+    b: [ 81, -447 ]
+
+  - descr: "squid"
+    a: [ 43, -88 ]
+    b: [ 67, -65 ]
+
+  - descr: "road to eugen"
+    a: [ -18, 52 ]
+    b: [ -18, 12 ]
+
+  - descr: "eugen"
+    a: [ -20, 51 ]
+    b: [ -18, 54 ]
+
+  - descr: "mesa"
+    a: [ 175, -16 ]
+    b: [ 183, -3 ]
+
+  - descr: "woodland mansion"
+    a: [ 511, 410 ]
+    b: [ 519, 415 ]
+
+  - descr: "base"
+    a: [ -53, -30 ]
+    b: [ -5, 13 ]
+
+  - descr: "base dungeon"
+    a: [ -32, -20 ]
+    b: [ -19, -1 ]
+
+  - descr: "jungle"
+    a: [ 308, 5 ]
+    b: [ 308, 5 ]

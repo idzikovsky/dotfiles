@@ -1,0 +1,21 @@
+dimension: end
+squares:
+  - descr: "base"
+    a: [ 23, 6 ]
+    b: [ -2, -3 ]
+
+  - descr: "highway"
+    a: [ 6, 3 ]
+    b: [ 6, 64 ]
+
+  - descr: "highway stop"
+    a: [ 5, 65 ]
+    b: [ 8, 66 ]
+
+  - descr: "hueta"
+    a: [ 16, 65 ]
+    b: [ 20, 61 ]
+
+  - descr: "bee island"
+    a: [ 22, 68 ]
+    b: [ 27, 74 ]

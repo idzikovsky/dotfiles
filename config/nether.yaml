@@ -1,0 +1,93 @@
+dimension: nether
+squares:
+  - descr: "base"
+    a: [ -4, -5 ]
+    b: [ -2, 1 ]
+
+  - descr: "wither room"
+    a: [ -2, -2 ]
+    b: [ 0, -2 ]
+
+  - descr: "gold"
+    a: [ -6, -4 ]
+    b: [ -2, 0 ]
+
+  - descr: "funance"
+    a: [ -10, -2 ]
+    b: [ -2, -5 ]
+
+  - descr: "portal to ocean farm"
+    a: [ -3, -4 ]
+    b: [ -2, -6 ]
+
+  - descr: "green lane main"
+    a: [ -2, -3 ]
+    b: [ 64, -2 ]
+
+  - descr: "portal to mesa"
+    a: [ 22, -1 ]
+    b: [ 22, -3 ]
+
+  - descr: "portal to jungle"
+    a: [ 38, 0 ]
+    b: [ 38, -3 ]
+
+  - descr: "portal to mansion"
+    a: [ 64, -3 ]
+    b: [ 64, 51 ]
+
+  - descr: "blue lane main"
+    a: [ -3, -1 ]
+    b: [ -3, 46]
+
+  - descr: "road to fortess right"
+    a: [ -8, 25 ]
+    b: [ -3, 25 ]
+
+  - descr: "fortress right"
+    a: [ -6, 22 ]
+    b: [ -9, 26 ]
+
+  - descr: "fortress right"
+    a: [ -9, 23 ]
+    b: [ -6, 26 ]
+
+  - descr: "road to fortess left"
+    a: [ -3, 43 ]
+    b: [ 20, 42 ]
+
+  - descr: "fortess left"
+    a: [ 20, 13 ]
+    b: [ 63, 51 ]
+
+  - descr: "portal to furnance"
+    a: [ -20, -3 ]
+    b: [ -4, -2 ]
+
+  - descr: "red lane"
+    a: [ -4, -3 ]
+    b: [ -33, -3 ]
+
+  - descr: "portal to witch"
+    a: [ -24, -3 ]
+    b: [ -25, 13 ]
+
+  - descr: "portal to ice"
+    a: [ -32, -3 ]
+    b: [ -33, -4 ]
+
+  - descr: "portal to stronghold red line"
+    a: [ -4, -3 ]
+    b: [ -20, -3 ]
+
+  - descr: "orange lane main"
+    a: [ -3, -4 ]
+    b: [ -3, -56 ]
+
+  - descr: "portal to stronghold yellow line"
+    a: [ -3, -10 ]
+    b: [ 6, -10 ]
+
+  - descr: "portal to mushrom"
+    a: [ -3, -56 ]
+    b: [ 10, -56 ]
