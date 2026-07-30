@@ -5,6 +5,8 @@ alias dotfiles="git --git-dir=$HOME/git/dotfiles.git/ --work-tree=$HOME"
 #
 export EDITOR='subl --wait'
 
+export PATH="$HOME/.local/bin:$PATH"
+
 export GEM_HOME="$HOME/.gems"
 export PATH="$HOME/.gems/bin:$PATH"
 
