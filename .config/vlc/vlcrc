@@ -1,19 +1,38 @@
-﻿[core]
-audio-language=en
-sub-language=en
+﻿[qt] # Qt interface
+
+# Ask for network policy at start (boolean)
+qt-privacy-ask=0
 
 [compressor] # Dynamic range compressor
+
 # RMS/peak (float)
 compressor-rms-peak=0.100000
+
 # Attack time (float)
 compressor-attack=50.000000
+
 # Release time (float)
-compressor-release=250.000000
+compressor-release=300.000000
+
 # Threshold level (float)
-compressor-threshold=-20.000000
+compressor-threshold=-8.000000
+
 # Ratio (float)
 compressor-ratio=20.000000
+
 # Knee radius (float)
 compressor-knee=1.000000
+
 # Makeup gain (float)
 compressor-makeup-gain=12.000000
+
+[core] # core program
+
+# Audio filters (string)
+audio-filter=compressor
+
+# Audio language (string)
+audio-language=en
+
+# Subtitle language (string)
+sub-language=en
