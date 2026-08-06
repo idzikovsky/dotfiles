@@ -12,6 +12,8 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 export KUBECONFIG="$HOME/.kube/currentconfig"
 
+export SAL_USE_VCLPLUGIN=gtk4
+
 export VAGRANT_NO_PARALLEL=true
 
 #
