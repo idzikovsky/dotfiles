@@ -1,0 +1,49 @@
+---
+version: '3'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: true
+      MYSQL_PASSWORD: "__NC_DB_PASSWORD__"
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+
+  redis:
+    image: redis
+    restart: always
+
+  nextcloud:
+    image: nextcloud:32-apache
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - ./config:/var/www/html/config
+      - ./data:/var/www/html/data
+    restart: always
+    environment:
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: "__NC_DB_PASSWORD__"
+      MYSQL_HOST: db
+      REDIS_HOST: redis
+      NEXTCLOUD_DATA_DIR: /var/www/html/data
+    depends_on:
+      - db
+      - redis
+
+  cron:
+    image: nextcloud
+    restart: always
+    entrypoint: /cron.sh
+    volumes:
+      - ./config:/var/www/html/config
+      - ./data:/var/www/html/data
+    depends_on:
+      - db
