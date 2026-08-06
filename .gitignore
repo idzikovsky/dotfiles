@@ -49,6 +49,12 @@
 # /.config/vlc/*
 # !/.config/vlc/vlcrc
 
+# !/.config/GIMP/
+# /.config/GIMP/*
+# !/.config/GIMP/3.2/
+# /.config/GIMP/3.2/*
+# !/.config/GIMP/3.2/gimprc
+
 !/.m2/
 /.m2/*
 !/.m2/settings.xml
