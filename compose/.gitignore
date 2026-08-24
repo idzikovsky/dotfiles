@@ -1,0 +1,10 @@
+!/data/
+/data/*
+!/data/server/
+/data/server/*
+!/data/server/eula.txt
+!/data/server/server.properties
+
+!/ssh/
+/ssh/*
+!/ssh/sshd.conf

@@ -1,0 +1,11 @@
+---
+services:
+    minecraft:
+        ports:
+            - "25522:22"
+            - "25565:25565"
+        build:
+            context: .
+        volumes:
+            - ./data/:/mnt/data
+            - ./ssh/:/mnt/ssh
