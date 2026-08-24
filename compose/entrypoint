@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -a
+. /etc/environment
+set +a
+
 # https://www.minecraft.net/en-us/article/minecraft-26-3-snapshot-7
 SERVER_URL="https://piston-data.mojang.com/v1/objects/06157fedd67ff4dd6e0e6fa4a9dd0af296f0dd61/server.jar"
 
@@ -11,6 +15,4 @@ if [ ! -e "${SSH_CONFIG_DIR}/host_key" ]; then
     ssh-keygen -N "" -f "${SSH_CONFIG_DIR}/host_key"
 fi
 
-/usr/bin/supervisord
-
-exec sleep infinity
+exec /usr/bin/supervisord --nodaemon

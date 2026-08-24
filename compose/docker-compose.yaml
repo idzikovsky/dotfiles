@@ -1,11 +1,12 @@
 ---
 services:
     minecraft:
-        ports:
-            - "25522:22"
-            - "25565:25565"
         build:
             context: .
+        restart: always
         volumes:
             - ./data/:/mnt/data
             - ./ssh/:/mnt/ssh
+        ports:
+            - "25522:22"
+            - "25565:25565"

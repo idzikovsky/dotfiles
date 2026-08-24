@@ -9,4 +9,4 @@ TIMESTAMP=${TIMESTAMP:-$(date "+%Y-%m-%d-%H-%M")}
 OUTFILE="${BACKUP_DIR}/backup-${TIMESTAMP}.tar.gz"
 echo "Backing up $OUTFILE"
 
-tar czf "${BACKUP_DIR}/backup-${TIMESTAMP}.tar.gz" -C "$DATA_DIR" "$WORLD_DIRNAME"
+tar czf "$OUTFILE" -C "$DATA_DIR" "$WORLD_DIRNAME"

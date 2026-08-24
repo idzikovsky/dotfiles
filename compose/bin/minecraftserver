@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Runs the Minecraft server, then drops to an interactive shell so the
+# screen window survives the java process stopping.
+
+cd "$SERVER_DIR" || exit 1
+
+java -Xmx4G -Xms4G -jar "${SERVER_DIR}/server.jar" nogui --world "${DATA_DIR}/${WORLD_DIRNAME}"
+
+echo
+echo "=== minecraft server exited (status $?) ==="
+echo "=== run '${BASH_SOURCE[0]}' to start it again, or Ctrl-A k to kill this window ==="
+echo
+
+exec bash -i
