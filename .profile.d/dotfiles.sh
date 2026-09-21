@@ -16,6 +16,11 @@ export SAL_USE_VCLPLUGIN=gtk4
 
 export VAGRANT_NO_PARALLEL=true
 
+export PATH="/opt/go/current/bin:$PATH"
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOBIN:$PATH"
+
 #
 # Aliases
 #
