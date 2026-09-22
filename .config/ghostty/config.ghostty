@@ -3,6 +3,7 @@ shell-integration-features = ssh-env,sudo
 command = /bin/bash --login
 theme = Monokai Classic
 font-feature = -calt
+clipboard-paste-protection = false
 keybind = alt+arrow_down=goto_split:down
 keybind = alt+arrow_left=goto_split:left
 keybind = alt+arrow_right=goto_split:right
