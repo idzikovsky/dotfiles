@@ -8,22 +8,11 @@ def description []: string -> string {
 # List available audio sinks with their PipeWire node ids
 def "main list" []: nothing -> table<index: int, name: string> {
     pw-cli list-objects Node
-    | lines
-    | parse "{_}id {id}, type {_}"
-    | get id
-    | each {|id|
-        {
-            index: ($id | into int),
-            info: (pw-cli info $id)
-        }
-    }
+    | split row -r "(?=\tid)"
+    | parse "\tid {index}, {info}"
     | where ($it.info | str contains 'media.class = "Audio/Sink"')
-    | each {
-        {
-            index: $in.index,
-            name: ($in.info | description)
-        }
-    }
+    | insert name { $in.info | description }
+    | select index name
 }
 
 # Check whether a sink is the default one
