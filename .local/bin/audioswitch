@@ -43,9 +43,15 @@ def "main status" [
 
 # Make a sink the default audio output
 def "main set" [
-    name: string # Sink description, as shown by `list`
+    name: string  # Sink description, as shown by `list`
+    --match (-m)  # Match <name> as a case-insensitive substring
 ]: nothing -> nothing {
-    let output_device = main list | where name == $name | first
+    let predicate = if $match {
+        {|sink| $sink.name | str contains --ignore-case $name }
+    } else {
+        {|sink| $sink.name == $name }
+    }
+    let output_device = main list | where $predicate | first
     if ($output_device | is-empty) {
         exit 1
     }
