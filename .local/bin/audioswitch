@@ -49,7 +49,14 @@ def "main set" [
 }
 
 # Switch the default PipeWire audio sink
-def main [] {
-    help main | print
-    exit 1
+#
+# Without a subcommand, works like `set --match <name>`.
+def main [
+    name?: string # Case-insensitive substring of the sink description
+]: nothing -> nothing {
+    if $name == null {
+        help main | print
+        exit 1
+    }
+    main set --match $name
 }
