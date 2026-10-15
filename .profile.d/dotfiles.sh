@@ -12,6 +12,7 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 export KUBECONFIG="$HOME/.kube/currentconfig"
 
+# Fix for LibreOffice UI
 export SAL_USE_VCLPLUGIN=gtk4
 
 export VAGRANT_NO_PARALLEL=true
@@ -37,29 +38,10 @@ addcert() {
   sudo update-ca-certificates
 }
 
-ccrop() {
-    convert "$1" -crop '2560x1440+1080+0' "$1"
-}
-
 d() {
     if [ "$1" = "c" ]; then
         sudo shutdown -c
     else
         sudo shutdown -h +$1 minutes
     fi
-}
-
-setaudio() {
-    name="$1"
-    nodes=$(pw-cli list-objects Node | grep -P -o '(?<=id )\d+(?=,)')
-    for node_id in $nodes; do
-        node_info=$(pw-cli info "$node_id")
-        if ! echo "$node_info" | grep -q -i 'media.class = "Audio/Sink"'; then
-            continue
-        fi
-        if echo "$node_info" | grep -q -i "node.description = .*${name}.*"; then
-            echo "$node_info" | grep "node.description"
-            wpctl set-default "$node_id"
-        fi
-    done
 }
