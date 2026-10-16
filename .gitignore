@@ -17,24 +17,23 @@
 !/.config/
 /.config/*
 
-!/.config/user-dirs.dirs
+!/.config/environment.d/
+/.config/environment.d/*
+!/.config/environment.d/99-libreoffice.conf
 
 !/.config/ghostty/
 /.config/ghostty/*
 !/.config/ghostty/config.ghostty
 
+!/.config/GIMP/
+/.config/GIMP/*
+!/.config/GIMP/3.2/
+/.config/GIMP/3.2/*
+!/.config/GIMP/3.2/gimprc
+
 !/.config/git/
 /.config/git/*
 !/.config/git/ignore
-
-!/.config/sublime-text/
-/.config/sublime-text/*
-!/.config/sublime-text/Packages/
-/.config/sublime-text/Packages/*
-!/.config/sublime-text/Packages/User/
-/.config/sublime-text/Packages/User/*
-!/.config/sublime-text/Packages/User/Preferences.sublime-settings
-!/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap
 
 !/.config/MangoHud/
 /.config/MangoHud/*
@@ -45,15 +44,33 @@
 !/.config/mpv/input.conf
 !/.config/mpv/mpv.conf
 
-# !/.config/vlc/
-# /.config/vlc/*
-# !/.config/vlc/vlcrc
+!/.config/nushell/
+/.config/nushell/*
+!/.config/nushell/config.nu
+!/.config/nushell/autoload/
+/.config/nushell/autoload/*
+!/.config/nushell/autoload/10-carapace.nu
 
-# !/.config/GIMP/
-# /.config/GIMP/*
-# !/.config/GIMP/3.2/
-# /.config/GIMP/3.2/*
-# !/.config/GIMP/3.2/gimprc
+!/.config/sublime-text/
+/.config/sublime-text/*
+!/.config/sublime-text/Packages/
+/.config/sublime-text/Packages/*
+!/.config/sublime-text/Packages/User/
+/.config/sublime-text/Packages/User/*
+!/.config/sublime-text/Packages/User/Preferences.sublime-settings
+!/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap
+
+!/.config/vlc/
+/.config/vlc/*
+!/.config/vlc/vlcrc
+
+!/.config/user-dirs.dirs
+
+!/.local/
+/.local/*
+!/.local/bin/
+/.local/bin/*
+!/.local/bin/audioswitch
 
 !/.m2/
 /.m2/*
@@ -67,4 +84,3 @@
 !/www/nextcloud/configure.sh
 !/www/nextcloud/docker-compose.yaml.template
 !/www/nextcloud/nextcloud.nginx.conf.template
-

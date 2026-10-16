@@ -1,5 +1,3 @@
-alias dotfiles="git --git-dir=$HOME/git/dotfiles.git/ --work-tree=$HOME"
-
 #
 # Environment variables
 #
@@ -11,9 +9,6 @@ export GEM_HOME="$HOME/.gems"
 export PATH="$HOME/.gems/bin:$PATH"
 
 export KUBECONFIG="$HOME/.kube/currentconfig"
-
-# Fix for LibreOffice UI
-export SAL_USE_VCLPLUGIN=gtk4
 
 export VAGRANT_NO_PARALLEL=true
 
