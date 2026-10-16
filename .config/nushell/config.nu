@@ -31,7 +31,7 @@ $env.VAGRANT_NO_PARALLEL = true
 alias tt = cd (mktemp -d)
 
 #
-# Shutdown alias
+# Custom commands
 #
 def "d c" []: nothing -> nothing {
     shutdown -c
