@@ -60,6 +60,12 @@
 !/.config/sublime-text/Packages/User/Preferences.sublime-settings
 !/.config/sublime-text/Packages/User/Default (Linux).sublime-keymap
 
+!/.config/systemd/
+/.config/systemd/*
+!/.config/systemd/user/
+/.config/systemd/user/*
+!/.config/systemd/user/speakerctl.service
+
 !/.config/vlc/
 /.config/vlc/*
 !/.config/vlc/vlcrc

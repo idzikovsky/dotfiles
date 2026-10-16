@@ -1,0 +1,19 @@
+[Unit]
+Description=Turn off speakers at system shutdown
+
+# use this for system-wide service:
+# After=network-online.target
+# Requires=network-online.target
+
+[Service]
+ExecStart=curl 'http://192.168.228.221/relay/0?turn=on'
+ExecStop=curl 'http://192.168.228.221/relay/0?turn=off'
+# ExecStatus=sh -c 'test $(curl -s "http://192.168.228.221/relay/0" | jq ".ison") = true'
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
+
+# use this for system-wide service:
+# WantedBy=multi-user.target
