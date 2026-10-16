@@ -1,6 +1,6 @@
-command = /usr/bin/nu --login
-# command = /bin/bash --login
+# command = /usr/bin/nu --login
 # env=custom_bashrc_force_color_prompt=yes
+# command = /bin/bash --login
 
 shell-integration-features = ssh-env,sudo
 theme = Monokai Classic

@@ -8,6 +8,16 @@ let gui = ($env.WAYLAND_DISPLAY? != null or $env.DISPLAY? != null)
 $env.config.buffer_editor = if $gui { ["subl", "--wait"] } else { "vim" }
 $env.config.show_banner = false
 
+$env.PROMPT_COMMAND_RIGHT = {
+    let ms = ($env.CMD_DURATION_MS? | default "0" | into int)
+    if $ms >= 1 {
+        ($ms * 1_000_000) | into duration
+    }
+}
+$env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = "    "
+$env.TRANSIENT_PROMPT_COMMAND_RIGHT = $env.PROMPT_COMMAND_RIGHT
+
+
 #
 # Environment variables
 #
@@ -42,7 +52,7 @@ def d [minutes: int]: nothing -> nothing {
 }
 
 def addcert [host: string, port: int = 443]: nothing -> nothing {
-  sudo true
-  null | openssl s_client -connect $"($host):($port)" -servername $host | openssl x509 | sudo tee $"/usr/local/share/ca-certificates/00custom-($host)-($port).crt" | ignore
-  sudo update-ca-certificates
+    sudo true
+    null | openssl s_client -connect $"($host):($port)" -servername $host | openssl x509 | sudo tee $"/usr/local/share/ca-certificates/00custom-($host)-($port).crt" | ignore
+    sudo update-ca-certificates
 }
