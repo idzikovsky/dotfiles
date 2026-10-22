@@ -50,6 +50,7 @@
 !/.config/nushell/autoload/
 /.config/nushell/autoload/*
 !/.config/nushell/autoload/10-carapace.nu
+!/.config/nushell/autoload/20-kubernetes.nu
 
 !/.config/sublime-text/
 /.config/sublime-text/*
